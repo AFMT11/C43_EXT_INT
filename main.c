@@ -14,6 +14,8 @@ int main(void)
 {
 	LED_INT();
 	EXT_INT0_INT();
+	EXT_INT1_INT();
+	EXT_INT2_INT();
     /* Replace with your application code */
     while (1) 
     {
@@ -27,5 +29,9 @@ ISR(INT0_vect)
 ISR(INT1_vect)
 {
 	LED1_TOGGLE();
+}
+ISR(INT2_vect)
+{
+	LED2_TOGGLE();
 }
 

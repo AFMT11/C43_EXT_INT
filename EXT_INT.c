@@ -51,20 +51,31 @@ void EXT_INT1_INT(void)
 	
 	/*Select Trigger*/
 	#if EXT_INT0_TRIGGER == TRIGGER_RISING
-	Set_Bit(MCUCSR,2);
-	Set_Bit(MCUCSR,3);
+	Set_Bit(MCUCR,2);
+	Set_Bit(MCUCR,3);
 	#elif EXT_INT0_TRIGGER == TRIGGER_FALLING
-	clear_Bit(MCUCSR,2);
-	Set_Bit(MCUCSR,3);
+	clear_Bit(MCUCR,2);
+	Set_Bit(MCUCR,3);
 	#elif EXT_INT0_TRIGGER == TRIGGER_ANY_LOGICAL_CHANGE
-	Set_Bit(MCUCSR,2);
-	clear_Bit(MCUCSR,3);
+	Set_Bit(MCUCR,2);
+	clear_Bit(MCUCR,3);
 	#elif EXT_INT0_TRIGGER == TRIGGER_LOW_LEVEL
-	clear_Bit(MCUCSR,2);
-	clear_Bit(MCUCSR,3);
-	#endif	
+	clear_Bit(MCUCR,2);
+	clear_Bit(MCUCR,3);
+	#endif
 }
 void EXT_INT2_INT(void)
 {
+	/*enable global INT*/
+	SetGlobal_INT();
 	
+	/*enable EXT INT0*/
+	Set_Bit(GICR,5);
+	
+	/*Select Trigger*/
+	#if EXT_INT0_TRIGGER == TRIGGER_RISING
+	Set_Bit(MCUCSR,6);
+	#elif EXT_INT0_TRIGGER == TRIGGER_FALLING
+	clear_Bit(MCUCSR,6);
+	#endif	
 }

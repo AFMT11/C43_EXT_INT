@@ -25,18 +25,12 @@ Discarded input sections
  .text          0x00000000        0x0 EXT_INT.o
  .data          0x00000000        0x0 EXT_INT.o
  .bss           0x00000000        0x0 EXT_INT.o
- .text.EXT_INT1_INT
-                0x00000000       0x18 EXT_INT.o
- .text.EXT_INT2_INT
-                0x00000000        0x2 EXT_INT.o
  .text          0x00000000        0x0 LED.o
  .data          0x00000000        0x0 LED.o
  .bss           0x00000000        0x0 LED.o
  .text.LED0_ON  0x00000000        0xc LED.o
  .text.LED1_ON  0x00000000        0xc LED.o
  .text.LED2_ON  0x00000000        0xc LED.o
- .text.LED2_TOGGLE
-                0x00000000        0xa LED.o
  .text.LED0_OFF
                 0x00000000        0xc LED.o
  .text.LED1_OFF
@@ -189,7 +183,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x2a8
+.text           0x00000000      0x32c
  *(.vectors)
  .vectors       0x00000000       0x54 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o
                 0x00000000                __vector_default
@@ -247,7 +241,6 @@ END GROUP
                 0x00000068                __vector_12
                 0x00000068                __bad_interrupt
                 0x00000068                __vector_6
-                0x00000068                __vector_3
                 0x00000068                __vector_11
                 0x00000068                __vector_13
                 0x00000068                __vector_17
@@ -277,27 +270,39 @@ END GROUP
  .text.EXT_INT0_INT
                 0x000001be       0x18 EXT_INT.o
                 0x000001be                EXT_INT0_INT
- .text.LED_INT  0x000001d6       0x20 LED.o
-                0x000001d6                LED_INT
+ .text.EXT_INT1_INT
+                0x000001d6       0x18 EXT_INT.o
+                0x000001d6                EXT_INT1_INT
+ .text.EXT_INT2_INT
+                0x000001ee       0x12 EXT_INT.o
+                0x000001ee                EXT_INT2_INT
+ .text.LED_INT  0x00000200       0x20 LED.o
+                0x00000200                LED_INT
  .text.LED0_TOGGLE
-                0x000001f6        0xa LED.o
-                0x000001f6                LED0_TOGGLE
+                0x00000220        0xa LED.o
+                0x00000220                LED0_TOGGLE
  .text.LED1_TOGGLE
-                0x00000200        0xa LED.o
-                0x00000200                LED1_TOGGLE
- .text.main     0x0000020a        0xa main.o
-                0x0000020a                main
+                0x0000022a        0xa LED.o
+                0x0000022a                LED1_TOGGLE
+ .text.LED2_TOGGLE
+                0x00000234        0xa LED.o
+                0x00000234                LED2_TOGGLE
+ .text.main     0x0000023e       0x12 main.o
+                0x0000023e                main
  .text.__vector_1
-                0x00000214       0x48 main.o
-                0x00000214                __vector_1
+                0x00000250       0x48 main.o
+                0x00000250                __vector_1
  .text.__vector_2
-                0x0000025c       0x48 main.o
-                0x0000025c                __vector_2
-                0x000002a4                . = ALIGN (0x2)
+                0x00000298       0x48 main.o
+                0x00000298                __vector_2
+ .text.__vector_3
+                0x000002e0       0x48 main.o
+                0x000002e0                __vector_3
+                0x00000328                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000002a4        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x000002a4                _exit
-                0x000002a4                exit
+ .fini9         0x00000328        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x00000328                _exit
+                0x00000328                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -316,11 +321,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000002a4        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x00000328        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x000002a8                _etext = .
+                0x0000032c                _etext = .
 
-.data           0x00800060        0x0 load address 0x000002a8
+.data           0x00800060        0x0 load address 0x0000032c
                 [!provide]                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -338,8 +343,8 @@ END GROUP
  *(.bss*)
  *(COMMON)
                 [!provide]                PROVIDE (__bss_end, .)
-                0x000002a8                __data_load_start = LOADADDR (.data)
-                0x000002a8                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0000032c                __data_load_start = LOADADDR (.data)
+                0x0000032c                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800060        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -413,7 +418,7 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x128
+.debug_aranges  0x00000000      0x130
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x58 DIO.o
@@ -422,43 +427,43 @@ END GROUP
  .debug_aranges
                 0x00000090       0x68 LED.o
  .debug_aranges
-                0x000000f8       0x30 main.o
+                0x000000f8       0x38 main.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0xbe7
+.debug_info     0x00000000      0xc4e
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x4e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_info    0x000004e6      0x243 DIO.o
- .debug_info    0x00000729       0xd6 EXT_INT.o
- .debug_info    0x000007ff      0x2bc LED.o
- .debug_info    0x00000abb      0x12c main.o
+ .debug_info    0x00000729       0xe0 EXT_INT.o
+ .debug_info    0x00000809      0x2bc LED.o
+ .debug_info    0x00000ac5      0x189 main.o
 
-.debug_abbrev   0x00000000      0x6ac
+.debug_abbrev   0x00000000      0x6c4
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x4a3 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_abbrev  0x000004a3       0xb8 DIO.o
- .debug_abbrev  0x0000055b       0x5e EXT_INT.o
- .debug_abbrev  0x000005b9       0x71 LED.o
- .debug_abbrev  0x0000062a       0x82 main.o
+ .debug_abbrev  0x0000055b       0x76 EXT_INT.o
+ .debug_abbrev  0x000005d1       0x71 LED.o
+ .debug_abbrev  0x00000642       0x82 main.o
 
-.debug_line     0x00000000      0x635
+.debug_line     0x00000000      0x66f
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x115 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_line    0x00000115      0x2d3 DIO.o
- .debug_line    0x000003e8       0xa3 EXT_INT.o
- .debug_line    0x0000048b      0x117 LED.o
- .debug_line    0x000005a2       0x93 main.o
+ .debug_line    0x000003e8       0xb5 EXT_INT.o
+ .debug_line    0x0000049d      0x117 LED.o
+ .debug_line    0x000005b4       0xbb main.o
 
-.debug_frame    0x00000000      0x270
+.debug_frame    0x00000000      0x2c8
  *(.debug_frame)
  .debug_frame   0x00000000       0x94 DIO.o
  .debug_frame   0x00000094       0x54 EXT_INT.o
  .debug_frame   0x000000e8       0xb4 LED.o
- .debug_frame   0x0000019c       0xd4 main.o
+ .debug_frame   0x0000019c      0x12c main.o
 
-.debug_str      0x00000000      0x490
+.debug_str      0x00000000      0x49b
  *(.debug_str)
  .debug_str     0x00000000      0x196 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_str     0x00000196      0x1b8 DIO.o
@@ -467,13 +472,13 @@ END GROUP
                                 0x196 (size before relaxing)
  .debug_str     0x000003da       0x6a LED.o
                                 0x1e8 (size before relaxing)
- .debug_str     0x00000444       0x4c main.o
-                                0x1d8 (size before relaxing)
+ .debug_str     0x00000444       0x57 main.o
+                                0x209 (size before relaxing)
 
-.debug_loc      0x00000000      0x60e
+.debug_loc      0x00000000      0x6d9
  *(.debug_loc)
  .debug_loc     0x00000000      0x478 DIO.o
- .debug_loc     0x00000478      0x196 main.o
+ .debug_loc     0x00000478      0x261 main.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -493,12 +498,12 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000       0xe8
+.debug_ranges   0x00000000       0xf0
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x48 DIO.o
  .debug_ranges  0x00000048       0x28 EXT_INT.o
  .debug_ranges  0x00000070       0x58 LED.o
- .debug_ranges  0x000000c8       0x20 main.o
+ .debug_ranges  0x000000c8       0x28 main.o
 
 .debug_macro
  *(.debug_macro)
