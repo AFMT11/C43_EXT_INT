@@ -24,4 +24,8 @@ ISR(INT0_vect)
 {
 	LED0_TOGGLE();
 }
+ISR(INT1_vect)
+{
+	LED1_TOGGLE();
+}
 
